@@ -1,0 +1,7 @@
+{
+  "name": "eco_market_ionic",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
