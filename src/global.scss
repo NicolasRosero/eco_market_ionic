@@ -37,7 +37,6 @@
 // @import '@ionic/angular/css/palettes/dark.system.css';
 
 :root {
-
   // Paleta VOGA
   --voga-dark: #252525;           // Negro verdoso profundo
   --voga-green: #1f4a1a;          // Verde grisáceo medio
@@ -45,9 +44,8 @@
   --voga-gray: #A9C5AF;           // Gris claro y neutro
   --voga-almost-white: #E7F1E6;   // Blanco casi puro
   --voga-parcial-white: #FAFAEE;  // Blanco puro
-  
+
   --voga-background: var(--voga-parcial-white) !important;
   --voga-font-family: 'Fira Sans Medium', sans-serif !important;
-
 }
 
