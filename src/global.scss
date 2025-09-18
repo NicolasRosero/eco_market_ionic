@@ -36,16 +36,72 @@
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 // @import '@ionic/angular/css/palettes/dark.system.css';
 
+// Fuentes
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gilda+Display&display=swap');
+
 :root {
   // Paleta VOGA
   --voga-dark: #252525;           // Negro verdoso profundo
-  --voga-green: #1f4a1a;          // Verde grisáceo medio
+  --voga-green: #52604B;          // Verde grisáceo medio
   --voga-light-green: #678D69;    // Blanco verdoso muy claro
   --voga-gray: #A9C5AF;           // Gris claro y neutro
   --voga-almost-white: #E7F1E6;   // Blanco casi puro
   --voga-parcial-white: #FAFAEE;  // Blanco puro
 
-  --voga-background: var(--voga-parcial-white) !important;
-  --voga-font-family: 'Fira Sans Medium', sans-serif !important;
+  // Colores de estado
+  --voga-success: #2e8b57;
+  --voga-dager: #A52A2A;
+  --voga-warning: #C2882C;
+
+
+  --voga-background-primary: var(--voga-green) !important;
+  --voga-background-secondary: var(--voga-parcial-white) !important;
+  --voga-background-dark: var(--voga-dark) !important;
+  --voga-font-family-primary: 'DM Serif Display', serif !important;
+  --voga-font-family-secondary: 'Gilda Display', serif !important;
 }
 
+* {
+  font-family: var(--voga-font-family-primary);
+}
+
+.screen-background-primary {
+  --background: var(--voga-background-primary);
+}
+
+.screen-background-secondary {
+  --background: var(--voga-background-secondary);
+}
+
+.screen-background-dark {
+  --background: var(--voga-background-dark);
+}
+
+.text-primary {
+  color: var(--voga-dark);
+}
+
+.text-secondary {
+  color: var(--voga-green);
+}
+
+.text-light {
+  color: var(--voga-light-green);
+}
+
+.text-dark {
+  color: #1f1f1f;
+}
+
+.text-success {
+  color: var(--voga-success);
+}
+
+.text-danger {
+  color: var(--voga-dager);
+}
+
+.text-warning {
+  color: var(--voga-warning);
+}
