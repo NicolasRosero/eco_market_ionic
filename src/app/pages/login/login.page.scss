@@ -1,0 +1,29 @@
+.main-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+}
+
+.icon-container {
+  display: none;
+}
+
+.form-section-container {
+  .title-container {
+    p {
+      font-family: var(--voga-font-family-primary);
+      font-size: 3rem;
+      color: var(--voga-green);
+    }
+  }
+
+  .form-container {
+    form {
+      ion-input {
+        border: 1px solid var(--voga-green);
+        background: var(--voga-gray);
+      }
+    }
+  }
+}
