@@ -1,4 +1,4 @@
-<ion-content [fullscreen]="true" class="screen-background-secondary">
+<ion-content [fullscreen]="true" class="screen-background-primary">
   <div class="main-container">
     <div class="box icon-container">
       <img src="assets/images/eco_market.png" alt="Icono Eco Market" />
@@ -10,22 +10,52 @@
       </div>
 
       <div class="box form-container">
-        <form action="">
-          <ion-input placeholder="" />
-          <ion-input placeholder="" />
+        <form [formGroup]="loginForm">
+          <div class="form-group">
+            <ion-label>Correo Electrónico</ion-label>
+            <ion-input
+              type="text"
+              formControlName="email"
+              placeholder="tu_correo@mail.com"
+              [class.is-invalid]="
+                loginForm.controls['email'].invalid &&
+                (loginForm.controls['email'].touched || loginForm.controls['email'].dirty)
+              "
+            />
+          </div>
+
+          <div class="form-group">
+            <ion-label>Contraseña</ion-label>
+            <ion-input
+              type="password"
+              formControlName="password"
+              placeholder="Ejem1234*"
+              [class.is-invalid]="
+                loginForm.controls['password'].invalid &&
+                (loginForm.controls['password'].touched || loginForm.controls['password'].dirty)
+              "
+            />
+          </div>
         </form>
       </div>
 
       <div class="box btn-submit-container">
-        <button type="submit">Entrar</button>
+        <ion-button
+          class="btn btn-form-submit"
+          type="button"
+          (click)="login()"
+        >
+          Entrar
+        </ion-button>
       </div>
 
       <div class="box text-reset-password-container">
-        <p>¿Olvidaste tu contraseña?</p>
+        <p (click)="goToForgotPassword()">¿Olvidaste tu contraseña?</p>
       </div>
 
       <div class="box text-register-container">
-        <p>¿No tienes una cuenta? Regístrate</p>
+        <span>¿No tienes una cuenta?</span>
+        <span class="link" (click)="goToRegister()">Regístrate</span>
       </div>
     </div>
   </div>

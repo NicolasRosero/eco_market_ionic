@@ -1,3 +1,46 @@
-<p>
-  header works!
-</p>
+<ion-header class="in-header">
+  <ion-toolbar class="toolbar-custom">
+    <div slot="start" class="left-section">
+      <ion-button fill="clear" class="icon-menu" (click)="openMenu()">
+        <ion-icon name="menu-outline" slot="icon-only"></ion-icon>
+      </ion-button>
+
+      <div class="logo-info-container">
+        <div class="app-icon-header">
+          <img src="assets/images/Logo.png" alt="Logo" class="logo-image" />
+        </div>
+
+        <div class="info-container">
+          <div class="nombre-app">{{ appName }}</div>
+
+          <div class="ubicacion">
+            <ion-icon name="location-outline" class="icono-ubicacion"></ion-icon>
+            <span>{{ "Perdidos" }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div slot="end" class="right-section">
+      <!-- Botón de perfil con avatar -->
+      <ion-button
+        *ngIf="showProfile"
+        fill="clear"
+        class="boton-perfil"
+        (click)="goToProfile()"
+      >
+        <div class="user-avatar">
+          <span class="initials-name">{{ getNameInitials() }}</span>
+        </div>
+
+        <div class="user-info">
+          <span class="user-full-name">{{ fullName }}</span>
+          <ion-icon
+            name="chevron-down-outline"
+            class="icono-dropdown"
+          ></ion-icon>
+        </div>
+      </ion-button>
+    </div>
+  </ion-toolbar>
+</ion-header>

@@ -42,16 +42,16 @@
 
 :root {
   // Paleta VOGA
-  --voga-dark: #252525;           // Negro verdoso profundo
-  --voga-green: #52604B;          // Verde grisáceo medio
-  --voga-light-green: #678D69;    // Blanco verdoso muy claro
-  --voga-gray: #A9C5AF;           // Gris claro y neutro
-  --voga-almost-white: #E7F1E6;   // Blanco casi puro
-  --voga-parcial-white: #FAFAEE;  // Blanco puro
+  --voga-dark: #252525; // Negro verdoso profundo
+  --voga-green: #52604B; // Verde grisáceo medio
+  --voga-light-green: #678D69; // Blanco verdoso muy claro
+  --voga-gray: #A9C5AF; // Gris claro y neutro
+  --voga-almost-white: #E7F1E6; // Blanco casi puro
+  --voga-parcial-white: #FAFAEE; // Blanco puro
 
   // Colores de estado
   --voga-success: #2e8b57;
-  --voga-dager: #A52A2A;
+  --voga-danger: #A52A2A;
   --voga-warning: #C2882C;
 
 
@@ -99,9 +99,54 @@
 }
 
 .text-danger {
-  color: var(--voga-dager);
+  color: var(--voga-danger);
 }
 
 .text-warning {
   color: var(--voga-warning);
+}
+
+ion-label,
+ion-input {
+  font-family: var(--voga-font-family-secondary) !important;
+}
+
+ion-label {
+  color: var(--voga-dark);
+  font-weight: bold;
+}
+
+ion-input {
+  border: 1px solid var(--voga-green);
+  background: var(--voga-almost-white);
+  color: var(--voga-dark) !important;
+  --padding: 0 8px !important;
+}
+
+.is-invalid {
+  border: 1px solid var(--voga-danger) !important;
+}
+
+.form-group {
+  margin: 1rem auto;
+}
+
+.btn {
+  --background: var(--voga-green);
+  --background-activated: var(--voga-dark);
+  --background-hover: var(--voga-dark);
+  --color: var(--voga-almost-white);
+  font-family: var(--voga-font-family-secondary) !important;
+  font-weight: 600;
+  padding: 0 2rem;
+}
+
+.link {
+  color: var(--voga-dark);
+  font-weight: bold;
+  cursor: pointer;
+}
+
+input[type="checkbox"], input[type="radio"] {
+  accent-color: var(--voga-green);
 }
