@@ -1,20 +1,62 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Blank
+    <ion-buttons slot="start">
+      <ion-avatar>
+        <img src="../../../assets/icon/icon_app.png" alt="logo">
+      </ion-avatar>
+    </ion-buttons>
+    <ion-title class="ion-text-center">
+      ECO MARKET
     </ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon slot="icon-only" name="cart-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="ion-padding">
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <!-- Imagen principal -->
+  <ion-img src="../../../assets/icon/product.png" alt="eco products"></ion-img>
+
+  <!-- Contador -->
+  <div class="contador">
+    <div>
+      <h2>8</h2>
+      <p>Horas</p>
+    </div>
+    <div>
+      <h2>10</h2>
+      <p>Minutos</p>
+    </div>
+    <div>
+      <h2>40</h2>
+      <p>Segundos</p>
+    </div>
   </div>
+
+  <!-- Sección de productos -->
+  <h3 class="ion-text-center">Productos</h3>
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="3">
+        <ion-avatar>
+          <img src="../../../assets/icon/prod1.jpg" alt="producto 1">
+        </ion-avatar>
+      </ion-col>
+      <ion-col size="3">
+        <ion-avatar>
+          <img src="../../../assets/icon/prod2.jpg" alt="producto 2">
+        </ion-avatar>
+      </ion-col>
+      <ion-col size="3">
+        <ion-avatar>
+          <img src="../../../assets/icon/prod3.jpg" alt="producto 3">
+        </ion-avatar>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
 </ion-content>
