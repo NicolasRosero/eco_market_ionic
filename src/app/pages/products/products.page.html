@@ -1,0 +1,17 @@
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <ion-item *ngFor="let p of products">
+      <ion-label>
+        <h2>{{ p.nombre }}</h2>
+        <p *ngIf="p.stock > 0">Stock: {{ p.stock - p.cantidad }}</p>
+        <p *ngIf="p.stock === 0" class="agotado">Producto agotado</p>
+      </ion-label>
+
+      <ion-button color="primary" (click)="agregar(p)">+</ion-button>
+
+      <ion-button color="danger" (click)="eliminar(p)">-</ion-button>
+
+      <ion-badge color="medium">{{ p.cantidad }}</ion-badge>
+    </ion-item>
+  </ion-list>
+</ion-content>

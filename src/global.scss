@@ -48,11 +48,13 @@
   --voga-gray: #A9C5AF; // Gris claro y neutro
   --voga-almost-white: #E7F1E6; // Blanco casi puro
   --voga-parcial-white: #FAFAEE; // Blanco puro
+  --voga-backGround-beige:#fff8d6; //Beige suave
 
   // Colores de estado
   --voga-success: #2e8b57;
   --voga-danger: #A52A2A;
   --voga-warning: #C2882C;
+  --voga-color-gray: #707271; // Gris claro y neutro
 
 
   --voga-background-primary: var(--voga-green) !important;
@@ -106,31 +108,6 @@
   color: var(--voga-warning);
 }
 
-ion-label,
-ion-input {
-  font-family: var(--voga-font-family-secondary) !important;
-}
-
-ion-label {
-  color: var(--voga-dark);
-  font-weight: bold;
-}
-
-ion-input {
-  border: 1px solid var(--voga-green);
-  background: var(--voga-almost-white);
-  color: var(--voga-dark) !important;
-  --padding: 0 8px !important;
-}
-
-.is-invalid {
-  border: 3px solid var(--voga-danger) !important;
-}
-
-.form-group {
-  margin: 1rem auto;
-}
-
 .btn {
   --background: var(--voga-green);
   --background-activated: var(--voga-dark);
@@ -158,6 +135,60 @@ ion-input {
   cursor: pointer;
 }
 
+/******* Formularios *******/
+ion-label,
+ion-input {
+  font-family: var(--voga-font-family-secondary) !important;
+}
+
+ion-label {
+  color: var(--voga-dark);
+  font-weight: bold;
+}
+
+ion-input {
+  border: 1px solid var(--voga-green);
+  background: var(--voga-almost-white);
+  color: var(--voga-dark) !important;
+  --padding: 0 8px !important;
+}
+
+.is-invalid {
+  border: 3px solid var(--voga-danger) !important;
+}
+
+.form-group {
+  margin: 1rem auto;
+}
+
 input[type="checkbox"], input[type="radio"] {
   accent-color: var(--voga-green);
+}
+
+/******* Productos <3 *******/
+.products-content {
+  padding: 16px;
+}
+
+.producto-card {
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 14px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.producto-card:hover {
+  transform: scale(1.03);
+}
+
+.producto-card img {
+  width: 100%;
+  border-radius: 14px 14px 0 0;
+  height: 150px;
+  object-fit: cover;
+}
+
+.agotado {
+  color: #e74c3c;
+  font-weight: bold;
 }

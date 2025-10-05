@@ -1,20 +1,35 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content [fullscreen]="true" class="ion-padding">
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <!-- Imagen prin -->
+  <ion-img
+    class="ion-icon-product"
+    src="../../../assets/images/product.jpg"
+    alt="eco products">
+  </ion-img>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <!-- Contenedor gene -->
+  <div class="contenedor-central">
+
+    <!-- Contador dinámi -->
+    <div class="contador">
+      <div *ngFor="let item of contador">
+        <h2>{{ item.valor }}</h2>
+        <p>{{ item.etiqueta }}</p>
+      </div>
+    </div>
+
+    <!-- Seccion de produ -->
+    <h3 class="ion-text-center">Productos</h3>
+    <ion-grid>
+      <ion-row class="ion-justify-content-center">
+        <ion-col size="3" *ngFor="let p of productos">
+          <ion-avatar>
+            <img [src]="p.imagen" [alt]="p.alt">
+          </ion-avatar>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  
   </div>
+
 </ion-content>
