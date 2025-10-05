@@ -1,45 +1,35 @@
-
 <ion-content [fullscreen]="true" class="ion-padding">
 
-  <!-- Imagen principal -->
-  <ion-img class="ion-icon-product" src="../../../assets/images/product.jpg" alt="eco products"></ion-img>
+  <!-- Imagen prin -->
+  <ion-img
+    class="ion-icon-product"
+    src="../../../assets/images/product.jpg"
+    alt="eco products">
+  </ion-img>
 
-  <!-- Contador -->
-  <div class="contador">
-    <div>
-      <h2>8</h2>
-      <p>Horas</p>
+  <!-- Contenedor gene -->
+  <div class="contenedor-central">
+
+    <!-- Contador dinámi -->
+    <div class="contador">
+      <div *ngFor="let item of contador">
+        <h2>{{ item.valor }}</h2>
+        <p>{{ item.etiqueta }}</p>
+      </div>
     </div>
-    <div>
-      <h2>10</h2>
-      <p>Minutos</p>
-    </div>
-    <div>
-      <h2>40</h2>
-      <p>Segundos</p>
-    </div>
+
+    <!-- Seccion de produ -->
+    <h3 class="ion-text-center">Productos</h3>
+    <ion-grid>
+      <ion-row class="ion-justify-content-center">
+        <ion-col size="3" *ngFor="let p of productos">
+          <ion-avatar>
+            <img [src]="p.imagen" [alt]="p.alt">
+          </ion-avatar>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  
   </div>
-
-  <!-- Sección de productos -->
-  <h3 class="ion-text-center">Productos</h3>
-  <ion-grid>
-    <ion-row class="ion-justify-content-center">
-      <ion-col size="3">
-        <ion-avatar>
-          <img src="../../../assets/images/product1.jpg" alt="producto 1">
-        </ion-avatar>
-      </ion-col>
-      <ion-col size="3">
-        <ion-avatar>
-          <img src="../../../assets/images/product2.jpg" alt="producto 2">
-        </ion-avatar>
-      </ion-col>
-      <ion-col size="3">
-        <ion-avatar>
-          <img src="../../../assets/images/product3.jpg" alt="producto 3">
-        </ion-avatar>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
 
 </ion-content>

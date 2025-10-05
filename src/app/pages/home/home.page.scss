@@ -5,7 +5,7 @@ ion-avatar img {
   object-fit: cover;
 }
 
-/* ---------- IMAGEN PRINCIPAL ---------- */
+/* ---------- IMAGEN PRIN ---------- */
 .ion-icon-product {
   display: block;
   width: 100%;
@@ -49,7 +49,7 @@ ion-avatar img {
   font-family: var(--voga-font-family-secondary);
 }
 
-/* ---------- SECCIÓN PRODUCTOS ---------- */
+/* ---------- SECCIÓN PRODU ---------- */
 h3 {
   margin-top: 1.8rem;
   font-size: 1.2rem;
@@ -62,10 +62,11 @@ ion-grid {
 }
 
 ion-avatar {
-  width: 80px;
-  height: 80px;
+  width: 90px;
+  height: 90px;
   margin: 0 auto;
-  border: 2px solid rgb(221, 213, 213);
+  padding: 2%;
+  border: 1px solid rgb(177, 255, 76);
   background: var(--voga-almost-white);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
@@ -77,8 +78,26 @@ ion-avatar img {
   object-fit: cover;
 }
 
+/* ---------- VERSIÓN PC (pantallas grandes) ---------- */
+@media (min-width: 768px) {
+  ion-avatar {
+    width: 150px;
+    height: 150px;
+  }
+}
+
 /* ---------- EFECTOS ---------- */
 ion-avatar:hover {
   transform: scale(1.05);
   transition: transform 0.3s ease;
+}
+
+
+/* ---------- CENTRAR CONTADOR ---------- */
+@media (max-width: 768px) {
+  .contenedor-central {
+    position: relative;
+    top: 30%;               
+    transform: translateY(-80%); 
+  }
 }
