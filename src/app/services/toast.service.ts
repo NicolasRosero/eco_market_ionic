@@ -17,7 +17,7 @@ export class ToastService {
     color: toastColor = 'primary',
     icon?: string
   ): Promise<void> {
-    const toast = this.toastController.create({
+    const toast = await this.toastController.create({
       message,
       duration,
       position,
@@ -25,6 +25,6 @@ export class ToastService {
       icon
     });
 
-    (await toast).present();
+    await toast.present();
   }
 }

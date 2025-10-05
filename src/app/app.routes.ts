@@ -35,11 +35,11 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/splash/splash.page').then( m => m.SplashPage)
   },
   {
-    path: '**',
-    redirectTo: 'login'
-  },
-  {
     path: 'profile',
     loadComponent: () => import('./pages/profile/profile.page').then( m => m.ProfilePage)
+  },
+  {
+    path: '**',
+    redirectTo: 'login'
   },
 ];

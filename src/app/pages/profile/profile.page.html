@@ -1,13 +1,78 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>profile</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content [fullscreen]="true" class="screen-background-primary">
+  <div class="main-container">
+    <div class="box form-section-container">
+      <div class="box photo-container">
+        <img src="assets/images/avatar_profile.png" alt="Icono Eco Market" />
+        <ion-button
+          class="btn-secondary btn-change-photo"
+        >
+          Cambiar foto
+        </ion-button>
+      </div>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">profile</ion-title>
-    </ion-toolbar>
-  </ion-header>
+      <div class="box form-container">
+        <form [formGroup]="profileForm">
+          <div class="form-group">
+            <ion-label>Nombre Completo</ion-label>
+            <ion-input
+              type="text"
+              formControlName="name"
+              placeholder="Ej: tu nombre"
+              [class.is-invalid]="
+                profileForm.controls['name'].invalid &&
+                (profileForm.controls['name'].touched || profileForm.controls['name'].dirty)
+              "
+            ></ion-input>
+          </div>
+
+          <div class="form-group">
+            <ion-label># Celular</ion-label>
+            <ion-input
+              type="text"
+              inputmode="numeric"
+              formControlName="phone"
+              placeholder="Ej: 3211234560"
+              [class.is-invalid]="
+                profileForm.controls['phone'].invalid &&
+                (profileForm.controls['phone'].touched || profileForm.controls['phone'].dirty)
+              "
+            ></ion-input>
+          </div>
+
+          <div class="form-group">
+            <ion-label>Correo Electrónico</ion-label>
+            <ion-input
+              type="text"
+              formControlName="email"
+              placeholder="tu_correo@mail.com"
+              [class.is-invalid]="
+                profileForm.controls['email'].invalid &&
+                (profileForm.controls['email'].touched || profileForm.controls['email'].dirty)
+              "
+            />
+          </div>
+        </form>
+      </div>
+
+      <div class="box btn-submit-container">
+        <ion-button
+          class="btn btn-form-submit"
+          type="button"
+          *ngIf="!isEditing"
+          (click)="setEditingMode()"
+        >
+          Editar
+        </ion-button>
+
+        <ion-button
+          class="btn btn-form-submit"
+          type="button"
+          *ngIf="isEditing"
+          (click)="submit()"
+        >
+          Guardar
+        </ion-button>
+      </div>
+    </div>
+  </div>
 </ion-content>

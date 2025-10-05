@@ -124,7 +124,7 @@ ion-input {
 }
 
 .is-invalid {
-  border: 1px solid var(--voga-danger) !important;
+  border: 3px solid var(--voga-danger) !important;
 }
 
 .form-group {
@@ -139,6 +139,17 @@ ion-input {
   font-family: var(--voga-font-family-secondary) !important;
   font-weight: 600;
   padding: 0 2rem;
+}
+
+.btn-secondary {
+  --background: var(--voga-light-green);
+  --background-activated: var(--voga-gray);
+  --background-hover: var(--voga-gray);
+  --color: var(--voga-almost-white);
+  font-family: var(--voga-font-family-secondary) !important;
+  font-weight: 600;
+  padding: 0 2rem;
+  width: 100%;
 }
 
 .link {

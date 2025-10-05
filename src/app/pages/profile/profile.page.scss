@@ -1,0 +1,101 @@
+.main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: var(--voga-background-secondary);
+  transition: all .5s ease-in-out;
+  width: 100%;
+  margin: auto;
+  min-height: 100%;
+}
+
+.form-section-container {
+  transition: all .5s ease-in-out;
+  width: 85%;
+
+  .photo-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      width: 70%;
+      height: 70%;
+      max-width: 70%;
+      max-height: 70%;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--voga-green);
+      margin-bottom: 1rem;
+    }
+
+    .btn-change-photo {
+      width: 70% !important;
+    }
+  }
+
+  .btn-submit-container {
+    text-align: center;
+
+    .btn-form-submit {
+      width: 100%;
+    }
+  }
+
+  .go-to-login-container {
+    text-align: center;
+    margin: 2rem auto;
+
+    span {
+      font-family: var(--voga-font-family-secondary) !important;
+      margin: auto 10px;
+    }
+  }
+}
+
+@media screen and (min-width: 455px) {
+  .main-container {
+    background: var(--voga-background-primary) !important;
+  }
+
+  .form-section-container {
+    border: 2px solid var(--voga-green);
+    background: var(--voga-background-secondary);
+    border-radius: 8px;
+    padding: 2rem;
+  }
+}
+
+@media screen and (min-width: 850px) {
+  .main-container {
+    background: var(--voga-background-primary) !important;
+    max-width: 900px;
+    width: 60%;
+  }
+}
+
+@media screen and (min-width: 1050px) {
+  .main-container {
+    background: var(--voga-background-primary) !important;
+    max-width: 1150px;
+    width: 100%;
+  }
+
+  .form-section-container {
+    width: 50%;
+  }
+}
+
+@media screen and (max-height: 550px) {
+  .main-container {
+    height: auto;
+  }
+}
+
+@media screen and (min-height: 2000px) {
+  .main-container {
+    height: 100vh;
+  }
+}
