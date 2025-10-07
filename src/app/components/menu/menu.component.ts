@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IonicModule } from "@ionic/angular";
+import { appName } from 'src/app/utils/strings';
 
 @Component({
   selector: 'app-menu',
@@ -8,6 +9,9 @@ import { IonicModule } from "@ionic/angular";
   imports: [IonicModule],
 })
 export class MenuComponent  implements OnInit {
+  appName: string = appName;
+  username: string = '';
+  useremail: string = '';
 
   constructor() { }
 

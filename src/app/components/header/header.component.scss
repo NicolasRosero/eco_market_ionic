@@ -1,0 +1,249 @@
+// Estilos para el header interno usando tus variables personalizadas
+.in-header {
+  // Toolbar personalizado con tus colores
+  .toolbar-custom {
+    --background: var(--voga-background-primary);
+    --color: var(--voga-parcial-white);
+    --border-color: transparent;
+    height: 80px;
+    padding-top: 8px !important;
+    padding-bottom: 8px !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+
+  // Sección izquierda del header
+  .left-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    // Botón hamburguesa - Solo visible en móvil
+    .icon-menu {
+      --color: var(--voga-parcial-white);
+      display: block;
+
+      ion-icon {
+        font-size: 24px;
+      }
+    }
+
+    // Contenedor principal de logo e info
+    .logo-info-container {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+
+      // Logo en el header (similar al que tienes en login)
+      .app-icon-header {
+        width: 45px;
+        height: 45px;
+        background: linear-gradient(135deg, var(--voga-parcial-white), #f8f9fa);
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+
+        .logo-image {
+          width: 28px;
+          height: 28px;
+          object-fit: contain;
+        }
+      }
+
+      // Contenedor de información (nombre app + ubicación)
+      .info-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 2px;
+
+        // Nombre de la aplicación
+        .app-name {
+          color: var(--voga-parcial-white);
+          font-size: 18px;
+          font-weight: bold;
+          line-height: 1.2;
+        }
+
+        // Ubicación con icono
+        .ubication {
+          display: flex;
+          align-items: center;
+          gap: 4px;
+          color: rgba(255, 255, 255, 0.9);
+          font-size: 13px;
+
+          .ubication-icon {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+
+  // Sección derecha del header
+  .right-section {
+    display: flex;
+    align-items: center;
+
+    // Botón de perfil
+    .btn-profile {
+      --color: var(--voga-parcial-white);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 12px;
+      border-radius: 25px;
+
+      // Efecto hover
+      &:hover {
+        --background: rgba(255, 255, 255, 0.1);
+      }
+
+      // Avatar del usuario
+      .user-avatar {
+        width: 40px;
+        height: 40px;
+        background: var(--voga-parcial-white);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+
+        .initials-name {
+          color: var(--voga-green);
+          font-size: 16px;
+          font-weight: bold;
+        }
+      }
+
+      // Información del usuario (solo visible en escritorio)
+      .user-info {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        margin: auto 7px;
+
+        .user-full-name {
+          color: var(--voga-parcial-white);
+          font-size: 14px;
+          font-weight: 500;
+          white-space: nowrap;
+        }
+
+        .dropdown-icon {
+          font-size: 16px;
+          color: rgba(255, 255, 255, 0.8);
+        }
+      }
+    }
+  }
+}
+
+// ============================================
+// RESPONSIVE DESIGN - MEDIA QUERIES
+// ============================================
+
+// Pantallas PEQUEÑAS (móviles) - 768px y menos
+@media (max-width: 768px) {
+  .in-header {
+    .toolbar-custom {
+      height: 70px;
+      padding: 0 15px;
+    }
+
+    .left-section {
+      gap: 10px;
+
+      // MOSTRAR botón hamburguesa en móvil
+      // .icon-menu {
+      //   display: block;
+      // }
+
+      .logo-info-container {
+        gap: 10px;
+
+        .app-icon-header {
+          width: 40px;
+          height: 40px;
+
+          .logo-image {
+            width: 24px;
+            height: 24px;
+          }
+        }
+
+        .info-container {
+          .app-name {
+            font-size: 16px;
+          }
+
+          .ubication {
+            font-size: 12px;
+          }
+        }
+      }
+    }
+
+    .right-section {
+      .btn-profile {
+        padding: 6px 8px;
+        gap: 8px;
+
+        .user-avatar {
+          width: 35px;
+          height: 35px;
+
+          .initials-name {
+            font-size: 14px;
+          }
+        }
+
+        // OCULTAR información del usuario en móvil
+        .user-info {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+// Pantallas GRANDES (escritorio) - 769px en adelante
+@media (min-width: 769px) {
+  .in-header {
+    // .left-section {
+
+    //   // OCULTAR botón hamburguesa en escritorio
+    //   .icon-menu {
+    //     display: none;
+    //   }
+    // }
+
+    .right-section {
+      .btn-profile {
+
+        // MOSTRAR información del usuario en escritorio
+        .user-info {
+          display: flex;
+        }
+      }
+    }
+  }
+}
+
+// Animaciones suaves para interacciones
+.icon-menu,
+.btn-profile {
+  transition: all 0.3s ease;
+}
+
+.user-avatar {
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
