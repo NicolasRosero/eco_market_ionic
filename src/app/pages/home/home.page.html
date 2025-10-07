@@ -1,35 +1,34 @@
-<ion-content [fullscreen]="true" class="ion-padding">
+<ion-content [fullscreen]="true">
+  <app-header />
+  <!-- <app-menu /> -->
 
   <!-- Imagen prin -->
   <ion-img
     class="ion-icon-product"
-    src="../../../assets/images/product.jpg"
-    alt="eco products">
-  </ion-img>
+    src="assets/images/product.jpg"
+    alt="eco products"
+  />
 
   <!-- Contenedor gene -->
   <div class="contenedor-central">
-
-    <!-- Contador dinámi -->
-    <div class="contador">
-      <div *ngFor="let item of contador">
-        <h2>{{ item.valor }}</h2>
-        <p>{{ item.etiqueta }}</p>
+    <!-- counter dinámi -->
+    <div class="counter">
+      <div *ngFor="let item of counter">
+        <h2>{{ item.value }}</h2>
+        <p>{{ item.tag }}</p>
       </div>
     </div>
 
-    <!-- Seccion de produ -->
+    <!-- Seccion de productos -->
     <h3 class="ion-text-center">Productos</h3>
     <ion-grid>
       <ion-row class="ion-justify-content-center">
-        <ion-col size="3" *ngFor="let p of productos">
+        <ion-col size="3" *ngFor="let p of homeProducts">
           <ion-avatar>
-            <img [src]="p.imagen" [alt]="p.alt">
+            <img [src]="p.image" [alt]="p.alt" />
           </ion-avatar>
         </ion-col>
       </ion-row>
     </ion-grid>
-  
   </div>
-
 </ion-content>
