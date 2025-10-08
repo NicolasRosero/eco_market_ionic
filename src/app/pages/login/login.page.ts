@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { IonContent, IonInput, IonLabel, IonButton } from '@ionic/angular/standalone';
 import { Router } from '@angular/router';
-import { StorageService } from 'src/app/services/storage.service';
 import { ToastService } from 'src/app/services/toast.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -21,8 +21,8 @@ export class LoginPage implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private storageService: StorageService,
-    private toastService: ToastService
+    private toastService: ToastService,
+    private authService: AuthService
   ) {
     this.loginForm = formBuilder.group({
       email: ["", [Validators.required, Validators.email]],
@@ -66,49 +66,25 @@ export class LoginPage implements OnInit {
     const result = this.validateForm();
 
     if (result) {
-      try {
-        const email = this.loginForm.controls['email'].value;
-        const password = this.loginForm.controls['password'].value;
-        const emailSaved: string = await this.storageService.get('user_email');
-        const passwordSaved: string = await this.storageService.get('user_password');
+      const email = this.loginForm.controls['email'].value;
+      const password = this.loginForm.controls['password'].value;
 
-        if(!emailSaved && !passwordSaved) {
-          this.toastService.presentToast(
-            "Lo sentimos, no hay usuarios registrados con estos datos.\nPor favor, regístrate para continuar.",
-            5000,
-            "top",
-            "warning",
-            "alert-circle"
-          );
+      const resp = await this.authService.login(email, password);
 
-          return;
-        }
-
-        if ((email === emailSaved) && (password === passwordSaved)) {
-          this.toastService.presentToast(
-            "Bienvenido",
-            2000,
-            'bottom',
-            'success',
-            'checkmark-circle'
-          );
-
-          this.router.navigate(['/home']);
-          this.storageService.set('isLoggedIn', true);
-          this.resetForm();
-        } else {
-          this.toastService.presentToast(
-            "Usuario o contrasña incorrectos",
-            2000,
-            "bottom",
-            "danger",
-            "close-circle"
-          );
-        }
-      } catch (error) {
-        console.error('Ha ocurrido un error al obtener la información');
+      if (resp.state) {
         this.toastService.presentToast(
-          "Ha ocurrido un error.\nReportalo al administrador.",
+          resp.message,
+          2000,
+          'bottom',
+          'success',
+          'checkmark-circle'
+        );
+
+        this.router.navigate(['/home']);
+        this.resetForm();
+      } else {
+        this.toastService.presentToast(
+          resp.message,
           2000,
           "bottom",
           "danger",

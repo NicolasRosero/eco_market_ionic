@@ -1,3 +1,7 @@
+<ion-header>
+  <app-header [showProfile]="false" />
+</ion-header>
+
 <ion-content [fullscreen]="true" class="screen-background-primary">
   <div class="main-container">
     <div class="box form-section-container">
@@ -50,6 +54,14 @@
                 (profileForm.controls['email'].touched || profileForm.controls['email'].dirty)
               "
             />
+          </div>
+
+          <div class="form-group">
+            <ion-label>Rol</ion-label>
+            <ion-input
+              type="text"
+              formControlName="rol"
+            ></ion-input>
           </div>
         </form>
       </div>

@@ -129,6 +129,17 @@
   width: 100%;
 }
 
+.btn-dark {
+  --background: var(--voga-gray);
+  --background-activated: var(--voga-color-gray);
+  --background-hover: var(--voga-color-gray);
+  --color: var(--voga-almost-white);
+  font-family: var(--voga-font-family-secondary) !important;
+  font-weight: 600;
+  padding: 0 2rem;
+  width: 100%;
+}
+
 .link {
   color: var(--voga-dark);
   font-weight: bold;
@@ -146,7 +157,7 @@ ion-label {
   font-weight: bold;
 }
 
-ion-input {
+ion-input, ion-select {
   border: 1px solid var(--voga-green);
   background: var(--voga-almost-white);
   color: var(--voga-dark) !important;

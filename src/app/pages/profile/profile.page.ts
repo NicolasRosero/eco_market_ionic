@@ -1,32 +1,36 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { IonContent, IonLabel, IonInput, IonButton } from '@ionic/angular/standalone';
 import { Router } from '@angular/router';
-import { StorageService } from 'src/app/services/storage.service';
 import { ToastService } from 'src/app/services/toast.service';
+import { AuthUserResp, User } from 'src/app/types';
+import { AuthService } from 'src/app/services/auth.service';
+import { IonicModule } from '@ionic/angular';
+import { HeaderComponent } from "src/app/components/header/header.component";
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.page.html',
   styleUrls: ['./profile.page.scss'],
   standalone: true,
-  imports: [IonContent, IonLabel, IonInput, IonButton, CommonModule, ReactiveFormsModule]
+  imports: [IonicModule, CommonModule, ReactiveFormsModule, HeaderComponent]
 })
 export class ProfilePage implements OnInit {
   profileForm: FormGroup;
   isEditing: boolean = false;
+  currentUser: User | null = null;
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private storageService: StorageService,
-    private toastService: ToastService
+    private toastService: ToastService,
+    private authService: AuthService
   ) {
     this.profileForm = this.formBuilder.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      phone: [null, [Validators.required, Validators.minLength(8), Validators.maxLength(10)]]
+      phone: [null, [Validators.required, Validators.minLength(8), Validators.maxLength(10)]],
+      rol: ['']
     });
   }
 
@@ -39,9 +43,12 @@ export class ProfilePage implements OnInit {
   }
 
   async getInfoUser(): Promise<void> {
-    this.profileForm.controls['name'].setValue(await this.storageService.get('user_name'));
-    this.profileForm.controls['email'].setValue(await this.storageService.get('user_email'));
-    this.profileForm.controls['phone'].setValue(await this.storageService.get('user_phone'));
+    this.currentUser = await this.authService.getCurrentUser();
+
+    this.profileForm.controls['name'].setValue(this.currentUser?.name);
+    this.profileForm.controls['email'].setValue(this.currentUser?.email);
+    this.profileForm.controls['phone'].setValue(this.currentUser?.phone);
+    this.profileForm.controls['rol'].setValue(this.currentUser?.rol);
   }
 
   validForm(): boolean {
@@ -66,37 +73,46 @@ export class ProfilePage implements OnInit {
     return true;
   }
 
-  saveData(): void {
-    try {
-      this.storageService.set("user_name", this.profileForm.controls['name'].value);
-      this.storageService.set("user_email", this.profileForm.controls['email'].value);
-      this.storageService.set("user_phone", this.profileForm.controls['phone'].value);
-    } catch (error) {
-      console.error('Ha ocurrido un error al guardar la información');
+  async saveData(): Promise<AuthUserResp> {
+    const userDataTosave: User = {
+      name: this.profileForm.controls['name'].value,
+      email: this.profileForm.controls['email'].value,
+      phone: this.profileForm.controls['phone'].value,
+      password: this.currentUser?.password ?? '',
+      rol: this.profileForm.controls['rol'].value,
+      userAgreeTerms: true
+    };
 
-      this.toastService.presentToast(
-        "Ha ocurrido un error. \n Reportalo al administrador.",
-        2000,
-        "bottom",
-        "danger",
-        "close-circle"
-      );
-    }
+    return await this.authService.editUser(userDataTosave);
   }
 
-  submit(): void {
+  async submit(): Promise<void> {
     if(this.validForm()) {
-      this.saveData();
-      this.setEditingMode();
-      this.resetForm();
+      const resp = await this.saveData();
 
-      this.toastService.presentToast(
-        "¡Perfil actualizado!",
-        2000,
-        "bottom",
-        "success",
-        "checkmark-circle"
-      );
+      if (resp.state) {
+        this.setEditingMode();
+        this.resetForm();
+
+        this.toastService.presentToast(
+          resp.message,
+          2000,
+          "bottom",
+          "success",
+          "checkmark-circle"
+        );
+      } else {
+        this.setEditingMode();
+        this.resetForm();
+
+        this.toastService.presentToast(
+          resp.message,
+          2000,
+          'bottom',
+          'danger',
+          'close-circle'
+        );
+      }
     }
   }
 
@@ -107,5 +123,7 @@ export class ProfilePage implements OnInit {
   setEditingMode(): void {
     this.isEditing = !this.isEditing;
     this.isEditing ? this.profileForm.enable() : this.profileForm.disable();
+    this.profileForm.controls['rol'].disable();
+    this.profileForm.controls['email'].disable();
   }
 }

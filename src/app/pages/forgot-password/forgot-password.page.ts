@@ -1,38 +1,40 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { IonContent, IonInput, IonLabel, IonButton } from '@ionic/angular/standalone';
 import { Router } from '@angular/router';
-import { StorageService } from 'src/app/services/storage.service';
 import { ToastService } from 'src/app/services/toast.service';
+import { AuthService } from 'src/app/services/auth.service';
+import { User } from 'src/app/types';
 
 @Component({
   selector: 'app-forgot-password',
   templateUrl: './forgot-password.page.html',
   styleUrls: ['./forgot-password.page.scss'],
   standalone: true,
-  imports: [IonContent, IonInput, IonLabel, IonButton, CommonModule, FormsModule, ReactiveFormsModule]
+  imports: [IonContent, IonInput, IonLabel, IonButton, CommonModule, ReactiveFormsModule]
 })
 export class ForgotPasswordPage implements OnInit, OnDestroy {
   private generalTimer: any | undefined;
 
   forgotPasswordForm: FormGroup;
+  user: User | null = null;
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private storageService: StorageService,
-    private toastService: ToastService
+    private toastService: ToastService,
+    private authService: AuthService
   ) {
     this.forgotPasswordForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]]
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   validForm(): boolean {
-    if(this.forgotPasswordForm.controls['email'].invalid) {
+    if (this.forgotPasswordForm.controls['email'].invalid) {
       this.forgotPasswordForm.controls['email'].markAllAsDirty();
       this.toastService.presentToast(
         "El correo es obligatorio y debe ser un correo valido",
@@ -51,11 +53,14 @@ export class ForgotPasswordPage implements OnInit, OnDestroy {
   async submit(): Promise<void> {
     const isValid = this.validForm();
 
-    if(isValid) {
+    if (isValid) {
       const email: string = this.forgotPasswordForm.controls['email'].value;
-      const emailSaved: string = await this.storageService.get('user_email');
 
-      if(email === emailSaved) {
+      this.user = await this.authService.getUserByEmail(email);
+
+      const emailSaved: string | undefined = this.user?.email;
+
+      if (email === emailSaved) {
         this.toastService.presentToast(
           "📧 Correo de recuperación enviado correctamente 📧",
           3000,

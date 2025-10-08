@@ -43,6 +43,10 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/products/products.page').then( m => m.ProductsPage)
   },
   {
+    path: 'categories',
+    loadComponent: () => import('./pages/categories/categories.page').then( m => m.CategoriesPage)
+  },
+  {
     path: '**',
     redirectTo: 'login'
   },

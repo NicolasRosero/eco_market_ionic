@@ -52,6 +52,24 @@
           </div>
 
           <div class="form-group">
+            <ion-label>Rol</ion-label>
+            <ion-select
+              formControlName="rol"
+              interface="popover"
+              placeholder="Selecciona un rol"
+              [class.is-invalid]="
+                registerForm.controls['rol'].invalid &&
+                (registerForm.controls['rol'].touched || registerForm.controls['rol'].dirty)
+              "
+            >
+              <ion-select-option value="" disabled>-- Seleccione --</ion-select-option>
+              <ion-select-option [value]="option.value" *ngFor="let option of roles">
+                {{ option.text }}
+              </ion-select-option>
+            </ion-select>
+          </div>
+
+          <div class="form-group">
             <ion-label>Contraseña</ion-label>
             <ion-input
               type="password"
