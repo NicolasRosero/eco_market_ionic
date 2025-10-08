@@ -1,0 +1,25 @@
+<ion-header>
+  <app-header />
+</ion-header>
+
+<ion-content [fullscreen]="true" class=".screen-background-primary">
+  <div class="main-content">
+    <div class="title-container">
+      <h3>Categorías</h3>
+    </div>
+
+    <div class="categories-container">
+      <div class="row">
+        <div class="col" *ngFor="let category of categories">
+          <div class="card-category clickable-card">
+            <ion-avatar>
+              <img [src]="category.image" [alt]="category.name" />
+            </ion-avatar>
+
+            <span class="category-name">{{ category.name }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

@@ -3,13 +3,14 @@ import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { ToastService } from 'src/app/services/toast.service';
 import { Router } from '@angular/router';
+import { HeaderComponent } from "src/app/components/header/header.component";
 
 @Component({
   selector: 'app-products',
   templateUrl: './products.page.html',
   styleUrls: ['./products.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule]
+  imports: [IonicModule, CommonModule, HeaderComponent]
 })
 export class ProductsPage implements OnInit {
   products = [

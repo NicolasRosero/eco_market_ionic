@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Product } from '../types';
+import { Category, Product } from '../types';
 import { StorageService } from './storage.service';
+import { productsDB } from 'src/DB';
 
 @Injectable({
   providedIn: 'root'
@@ -18,10 +19,12 @@ export class ProductsService {
     try {
       if(this.initialized) return this.products;
 
-      const savedProducts: Product[] = await this.storageService.get(this.STORAGE_KEY);
+      const savedProducts: Product[] = JSON.parse(await this.storageService.get(this.STORAGE_KEY)) || [];
+
+      console.log('Productos: ', savedProducts)
 
       if (savedProducts && savedProducts.length > 0) {
-        this.products = savedProducts
+        this.products = savedProducts;
       } else {
         console.log('No se encontrarón productos en el storage, estableciendo por defecto');
 
@@ -65,9 +68,28 @@ export class ProductsService {
     try {
       await this.initProducts();
 
-      return this.products.filter((item) => item.category.toLowerCase() === category.toLowerCase());
+      return this.products.filter((item) => item.category.name.toLowerCase() === category.toLowerCase());
     } catch (error) {
       console.error('Error al obtener los productos por categoría: ', error);
+      return [];
+    }
+  }
+
+  async getCategories(): Promise<Category[]> {
+    try {
+      await this.initProducts();
+
+      const allCategories = this.products.map((item) => item.category);
+
+      const uniqueCategories = new Map<string, Category>();
+
+      allCategories.forEach((category) => {
+        uniqueCategories.set(category.name, category);
+      });
+
+      return Array.from(uniqueCategories.values());
+    } catch (error) {
+      console.error('Error al obtener las categorías: ', error);
       return [];
     }
   }
@@ -84,57 +106,7 @@ export class ProductsService {
   }
 
   private async setDefaultProducts(): Promise<void> {
-    const products: Product[] = [
-      {
-        id: 1,
-        name: "Cepillo de Bambú Ecológico",
-        desc: "Cepillo dental hecho con mango de bambú biodegradable y cerdas suaves libres de BPA.",
-        price: 12000,
-        image: "https://example.com/cepillo-bambu.jpg",
-        category: "Higiene personal",
-        stock: 50,
-        noted: true
-      },
-      {
-        id: 2,
-        name: "Botella Reutilizable de Acero Inoxidable",
-        desc: "Botella térmica libre de plásticos, mantiene las bebidas frías o calientes por horas.",
-        price: 68000,
-        image: "https://example.com/botella-acero.jpg",
-        category: "Reutilizables",
-        stock: 30
-      },
-      {
-        id: 3,
-        name: "Bolsa de Tela Orgánica",
-        desc: "Bolsa de algodón orgánico ideal para compras, resistente y lavable.",
-        price: 25000,
-        image: "https://example.com/bolsa-tela.jpg",
-        category: "Accesorios",
-        stock: 40,
-        noted: false
-      },
-      {
-        id: 4,
-        name: "Shampoo Sólido Natural",
-        desc: "Elaborado con aceites esenciales, sin sulfatos ni plásticos. Ideal para cabello normal.",
-        price: 32000,
-        image: "https://example.com/shampoo-solido.jpg",
-        category: "Cuidado personal",
-        stock: 25,
-        noted: false
-      },
-      {
-        id: 5,
-        name: "Kit de Cubiertos Reutilizables",
-        desc: "Set de cubiertos de bambú con estuche de tela. Perfecto para llevar y evitar plásticos de un solo uso.",
-        price: 28000,
-        image: "https://example.com/cubiertos-bambu.jpg",
-        category: "Reutilizables",
-        stock: 35,
-        noted: true
-      }
-    ];
+    const products: Product[] = productsDB;
 
     await this.storageService.set(this.STORAGE_KEY, JSON.stringify(products));
   }
