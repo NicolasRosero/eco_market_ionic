@@ -29,6 +29,7 @@ export interface Product {
   category: Category;
   stock: number;
   noted?: boolean;
+  quantity?: number;
 }
 
 export interface Category {

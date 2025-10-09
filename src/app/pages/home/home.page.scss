@@ -8,7 +8,7 @@ ion-avatar img {
 .ion-icon-product {
   display: block;
   width: 100%;
-  max-width: 90%;
+  max-width: 70%;
   margin: 1rem auto;
   border-radius: 16px;
   overflow: hidden;
@@ -39,22 +39,9 @@ ion-avatar img {
   letter-spacing: 2px;
   text-shadow: 0 2px 6px rgba(0, 0, 0, 0.7);
   pointer-events: none;
-  font-size: clamp(1.2rem, 4vw, 5rem); 
+  font-size: clamp(1.2rem, 4vw, 5rem);
   line-height: 1.2;
 }
-
-@media (max-width: 480px) {
-  .overlay-text {
-    font-size: 2.2rem; 
-  }
-}
-@media (min-width: 1024px) {
-  .overlay-text {
-    font-size: 5.8rem; 
-  }
-}
-
-
 
 /* ---------- Contador ---------- */
 .counter {
@@ -142,5 +129,14 @@ ion-avatar:hover {
   }
 }
 
+@media (max-width: 480px) {
+  .overlay-text {
+    font-size: 2.2rem;
+  }
+}
 
-
+@media (min-width: 1024px) {
+  .overlay-text {
+    font-size: 5.8rem;
+  }
+}

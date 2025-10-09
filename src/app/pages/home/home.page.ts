@@ -1,18 +1,14 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { HeaderComponent } from 'src/app/components/header/header.component';
-import { register } from 'swiper/element/bundle';
-
-register();
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, HeaderComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  imports: [IonicModule, CommonModule, HeaderComponent]
 })
 export class HomePage {
   counter = [
@@ -20,7 +16,6 @@ export class HomePage {
     { value: 0, tag: 'Minutos' },
     { value: 0, tag: 'Segundos' },
   ];
-
 
   homeProducts = [
     { image: 'assets/images/product1.jpg', alt: 'producto 1' },
