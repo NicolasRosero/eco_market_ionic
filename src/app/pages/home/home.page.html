@@ -3,16 +3,16 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <!-- Imagen prin -->
-  <ion-img
-    class="ion-icon-product"
-    src="assets/images/product.jpg"
-    alt="eco products"
-  />
 
-  <!-- Contenedor gene -->
+  <div class="image-container">
+    <ion-img class="ion-icon-product" src="assets/images/product.jpg" alt="eco products"></ion-img>
+    <div class="overlay-text">¡Bienvenidos!</div>
+  </div>
+
+
   <div class="contenedor-central">
-    <!-- counter dinámi -->
+
+    <!-- Contador -->
     <div class="counter">
       <div *ngFor="let item of counter">
         <h2>{{ item.value }}</h2>
@@ -20,7 +20,7 @@
       </div>
     </div>
 
-    <!-- Seccion de productos -->
+    <!-- Productos -->
     <h3 class="ion-text-center">Productos</h3>
     <ion-grid>
       <ion-row class="ion-justify-content-center">
