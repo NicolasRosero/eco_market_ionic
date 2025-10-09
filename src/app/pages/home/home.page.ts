@@ -1,17 +1,19 @@
-import { Component } from '@angular/core';
-import { IonicModule } from '@ionic/angular';
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HeaderComponent } from "src/app/components/header/header.component";
+import { IonicModule } from '@ionic/angular';
+import { HeaderComponent } from 'src/app/components/header/header.component';
+import { register } from 'swiper/element/bundle';
+
+register();
 
 @Component({
   selector: 'app-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
+  templateUrl: './home.page.html',
+  styleUrls: ['./home.page.scss'],
   standalone: true,
   imports: [IonicModule, CommonModule, HeaderComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-
-
 export class HomePage {
   counter = [
     { value: 0, tag: 'Horas' },
@@ -19,9 +21,14 @@ export class HomePage {
     { value: 0, tag: 'Segundos' },
   ];
 
-  private intervalId: any;
 
-  constructor() {}
+  homeProducts = [
+    { image: 'assets/images/product1.jpg', alt: 'producto 1' },
+    { image: 'assets/images/product2.jpg', alt: 'producto 2' },
+    { image: 'assets/images/product3.jpg', alt: 'producto 3' },
+  ];
+
+  private intervalId: any;
 
   ngOnInit() {
     this.actualizarHora();
@@ -29,20 +36,13 @@ export class HomePage {
   }
 
   private actualizarHora() {
-    const currentDate = new Date();
-
+    const now = new Date();
     this.counter = [
-      { value: currentDate.getHours(), tag: 'Horas' },
-      { value: currentDate.getMinutes(), tag: 'Minutos' },
-      { value: currentDate.getSeconds(), tag: 'Segundos' },
+      { value: now.getHours(), tag: 'Horas' },
+      { value: now.getMinutes(), tag: 'Minutos' },
+      { value: now.getSeconds(), tag: 'Segundos' },
     ];
   }
-
-  homeProducts = [
-    { image: 'assets/images/product1.jpg', alt: 'producto 1' },
-    { image: 'assets/images/product2.jpg', alt: 'producto 2' },
-    { image: 'assets/images/product3.jpg', alt: 'producto 3' },
-  ];
 
   ngOnDestroy() {
     clearInterval(this.intervalId);
