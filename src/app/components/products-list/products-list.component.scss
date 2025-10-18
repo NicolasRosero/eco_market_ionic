@@ -1,0 +1,236 @@
+.product-list-container {
+  padding: 10px;
+}
+
+// -----------------------------------------------------------------
+// 1. Diseño de Grid Responsivo (4 columnas en desktop)
+// -----------------------------------------------------------------
+.product-list {
+  display: grid;
+  gap: 20px;
+
+  // Móviles (hasta 767px): 1 columna
+  grid-template-columns: repeat(1, 1fr);
+
+  // Tablets (768px - 1199px): 2 columnas
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  // Desktop (1200px+): 4 columnas
+  @media (min-width: 1200px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+// -----------------------------------------------------------------
+// 2. Estilos de la Tarjeta y Contenido
+// -----------------------------------------------------------------
+.product-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--voga-green);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  background: var(--voga-parcial-white);
+  overflow: hidden;
+  height: 100%;
+
+  &.is-out-of-stock {
+    opacity: 0.6;
+    pointer-events: none;
+  }
+}
+
+.image-container {
+  width: 100%;
+  height: 120px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--voga-green);
+  position: relative;
+
+  img {
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+}
+
+.product-info {
+  padding: 15px;
+  text-align: left;
+  flex-grow: 1;
+
+  h2 {
+    font-family: var(--voga-font-family-secondary) !important;
+    font-size: 1.1em;
+    font-weight: 600;
+    margin: 0 0 5px 0;
+    color: var(--voga-dark);
+  }
+
+  .description {
+    font-size: 0.85em;
+    color: var(--voga-color-gray);
+    min-height: 38px;
+    margin: 0 0 10px 0;
+  }
+
+  .price {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--voga-dark);
+    margin: 10px 0 5px 0;
+  }
+
+  .agotado-text {
+    font-weight: bold;
+    color: var(--ion-color-danger);
+  }
+}
+
+// -----------------------------------------------------------------
+// 3. Controles de Botones (Añadir o +/-)
+// -----------------------------------------------------------------
+.product-controls {
+  padding: 0 15px 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+// Estilos para el botón AÑADIR (cuando quantity es 0)
+.add-button.full-width {
+  margin-top: 10px;
+  height: 38px;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+// Estilos para los botones +/- (Verde, solo símbolo)
+.product-controls-group.inline-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 10px;
+
+  ion-button {
+    --padding-start: 0;
+    --padding-end: 0;
+    --min-width: 38px;
+    height: 38px;
+    margin: 0 5px;
+    border-radius: 4px;
+
+    // Aplicamos color VERDE a ambos botones (+ y -)
+    &[color="success"] {
+      --background: var(--ion-color-success);
+      --background-activated: var(--ion-color-success-shade);
+      --background-hover: var(--ion-color-success-tint);
+    }
+
+    // Estilo del símbolo (+/-)
+    .control-symbol {
+      font-size: 1.5em;
+      font-weight: bold;
+      color: white;
+      display: block;
+      line-height: 1;
+    }
+  }
+
+  // Estilo del contador central
+  .quantity-display {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 38px;
+    height: 38px;
+    font-weight: bold;
+    color: var(--voga-dark);
+    background-color: var(--voga-light-gray);
+    border-radius: 4px;
+    border: 1px solid var(--voga-color-gray);
+    font-size: 1.2em;
+  }
+}
+
+// -----------------------------------------------------------------
+// 4. Estilos para el Footer (Verde Oscuro - Color Primary)
+// -----------------------------------------------------------------
+.total-summary {
+  ion-toolbar {
+    --padding-start: 0;
+    --padding-end: 0;
+    --background: var(--voga-green);
+  }
+
+  .summary-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    background: var(--voga-green);
+    color: var(--voga-almost-white);
+
+    // Contenedor de Carrito e Items (Clickeable)
+    .summary-details {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+
+      p {
+        margin: 0 0 0 5px;
+      }
+
+      .cart-icon {
+        font-size: 1.6em;
+        color: var(--voga-almost-white);
+      }
+    }
+
+    .summary-value {
+      p {
+        margin: 0;
+      }
+    }
+
+    p {
+      font-size: 0.9em;
+
+      strong {
+        font-family: var(--voga-font-family-secondary);
+        font-size: 1.1em;
+      }
+    }
+
+    // Contenedor de Botones (Derecha)
+    .summary-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+
+      ion-button {
+        height: 44px;
+        font-weight: bold;
+        border-radius: 8px;
+      }
+
+      ion-button[color="success"] {
+        padding: 0 20px;
+        font-family: var(--voga-font-family-secondary) !important;
+      }
+
+      // Botón Eliminar (Rojo, solo ícono)
+      ion-button[color="danger"] {
+        --padding-start: 12px;
+        --padding-end: 12px;
+        --min-width: 44px;
+      }
+    }
+  }
+}

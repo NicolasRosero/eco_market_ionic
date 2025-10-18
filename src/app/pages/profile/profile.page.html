@@ -22,6 +22,7 @@
               type="text"
               formControlName="name"
               placeholder="Ej: tu nombre"
+              [readonly]="!isEditing"
               [class.is-invalid]="
                 profileForm.controls['name'].invalid &&
                 (profileForm.controls['name'].touched || profileForm.controls['name'].dirty)
@@ -36,6 +37,7 @@
               inputmode="numeric"
               formControlName="phone"
               placeholder="Ej: 3211234560"
+              [readonly]="!isEditing"
               [class.is-invalid]="
                 profileForm.controls['phone'].invalid &&
                 (profileForm.controls['phone'].touched || profileForm.controls['phone'].dirty)
