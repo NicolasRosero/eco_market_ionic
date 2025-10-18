@@ -12,39 +12,43 @@ export const routes: Routes = [
   },
   {
     path: 'login',
-    loadComponent: () => import('./pages/login/login.page').then( m => m.LoginPage)
+    loadComponent: () => import('./pages/login/login.page').then(m => m.LoginPage)
   },
   {
     path: 'register',
-    loadComponent: () => import('./pages/register/register.page').then( m => m.RegisterPage)
+    loadComponent: () => import('./pages/register/register.page').then(m => m.RegisterPage)
   },
   {
     path: 'forgot-password',
-    loadComponent: () => import('./pages/forgot-password/forgot-password.page').then( m => m.ForgotPasswordPage)
+    loadComponent: () => import('./pages/forgot-password/forgot-password.page').then(m => m.ForgotPasswordPage)
   },
   {
     path: 'reset-password',
-    loadComponent: () => import('./pages/reset-password/reset-password.page').then( m => m.ResetPasswordPage)
+    loadComponent: () => import('./pages/reset-password/reset-password.page').then(m => m.ResetPasswordPage)
   },
   {
     path: 'shopping-cart',
-    loadComponent: () => import('./pages/shopping-cart/shopping-cart.page').then( m => m.ShoppingCartPage)
+    loadComponent: () => import('./pages/shopping-cart/shopping-cart.page').then(m => m.ShoppingCartPage)
   },
   {
     path: 'splash',
-    loadComponent: () => import('./pages/splash/splash.page').then( m => m.SplashPage)
+    loadComponent: () => import('./pages/splash/splash.page').then(m => m.SplashPage)
   },
   {
     path: 'profile',
-    loadComponent: () => import('./pages/profile/profile.page').then( m => m.ProfilePage)
+    loadComponent: () => import('./pages/profile/profile.page').then(m => m.ProfilePage)
   },
   {
     path: 'products',
-    loadComponent: () => import('./pages/products/products.page').then( m => m.ProductsPage)
+    loadComponent: () => import('./pages/products/products.page').then(m => m.ProductsPage)
   },
   {
     path: 'categories',
-    loadComponent: () => import('./pages/categories/categories.page').then( m => m.CategoriesPage)
+    loadComponent: () => import('./pages/categories/categories.page').then(m => m.CategoriesPage)
+  },
+  {
+    path: 'products-by-category',
+    loadComponent: () => import('./pages/products-by-category/products-by-category.page').then(m => m.ProductsByCategoryPage)
   },
   {
     path: '**',

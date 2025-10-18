@@ -35,7 +35,8 @@ export class ProfilePage implements OnInit {
   }
 
   ngOnInit() {
-    this.profileForm.disable();
+    this.profileForm.controls['rol'].disable();
+    this.profileForm.controls['email'].disable();
 
     setTimeout(() => {
       this.getInfoUser();
@@ -122,7 +123,6 @@ export class ProfilePage implements OnInit {
 
   setEditingMode(): void {
     this.isEditing = !this.isEditing;
-    this.isEditing ? this.profileForm.enable() : this.profileForm.disable();
     this.profileForm.controls['rol'].disable();
     this.profileForm.controls['email'].disable();
   }

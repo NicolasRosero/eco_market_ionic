@@ -21,8 +21,6 @@ export class ProductsService {
 
       const savedProducts: Product[] = JSON.parse(await this.storageService.get(this.STORAGE_KEY)) || [];
 
-      console.log('Productos: ', savedProducts)
-
       if (savedProducts && savedProducts.length > 0) {
         this.products = savedProducts;
       } else {

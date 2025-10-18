@@ -2,7 +2,7 @@
   <app-header />
 </ion-header>
 
-<ion-content [fullscreen]="true" class=".screen-background-primary">
+<ion-content [fullscreen]="true" class="screen-background-secondary">
   <div class="main-content">
     <div class="title-container">
       <h3>Categorías</h3>
@@ -11,7 +11,7 @@
     <div class="categories-container">
       <div class="row">
         <div class="col" *ngFor="let category of categories">
-          <div class="card-category clickable-card">
+          <div class="card-category clickable-card" (click)="setCagetory(category.name)">
             <ion-avatar>
               <img [src]="category.image" [alt]="category.name" />
             </ion-avatar>

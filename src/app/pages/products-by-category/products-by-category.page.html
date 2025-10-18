@@ -1,0 +1,21 @@
+<ion-header>
+  <app-header />
+</ion-header>
+
+<ion-content [fullscreen]="true" class="screen-background-secondary">
+  <div class="main-content">
+    <!-- Sección de título -->
+    <div class="title-container">
+      <ion-avatar>
+        <img [src]="category?.image" [alt]="category?.name" />
+      </ion-avatar>
+
+      <h3>{{ category?.name }}</h3>
+    </div>
+    <!--End Sección de título -->
+
+    <!-- Sección de productos -->
+    <app-products-list [products]="products" />
+    <!-- End Sección de productos -->
+  </div>
+</ion-content>

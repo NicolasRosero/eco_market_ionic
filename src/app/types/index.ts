@@ -2,6 +2,15 @@
 export type toastPosition = 'top' | 'middle' | 'bottom';
 export type toastColor = 'primary' | 'secondary' | 'tertiary' | 'success' | 'warning' | 'danger' | 'light' | 'medium' | 'dark';
 
+// Tipos para AlertController
+export interface AlertOptions {
+  header: string;
+  message: string;
+  subHeader?: string;
+  backdropDismiss?: boolean;
+  cssClass?: string;
+}
+
 // Estructura de información de usuario
 export interface User {
   name: string;
