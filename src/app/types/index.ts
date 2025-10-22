@@ -45,3 +45,9 @@ export interface Category {
   name: string;
   image: string;
 }
+
+// Tipo del carrito de compras
+export interface ShoppigCartItem {
+  product: Product;
+  quantity: number;
+}
