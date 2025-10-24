@@ -31,12 +31,12 @@
 
         <div class="product-controls-group inline-buttons" *ngIf="product.stock > 0">
           <ion-button size="small" fill="solid" color="danger" (click)="changeQuantity(product, -1)"
-            [disabled]="(product.quantity || 0) <= 0">
+            [disabled]="(product.stock || 0) <= 0">
             <ion-icon name="remove-outline"></ion-icon>
           </ion-button>
 
           <div class="quantity-display">
-            {{ product.quantity }}
+            {{ product.stock }}
           </div>
 
           <ion-button size="small" fill="solid" color="success" (click)="changeQuantity(product, 1)"

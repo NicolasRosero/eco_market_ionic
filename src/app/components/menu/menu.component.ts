@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { IonicModule, MenuController } from "@ionic/angular";
@@ -9,7 +10,7 @@ import { appName } from 'src/app/utils/strings';
   selector: 'app-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.scss'],
-  imports: [IonicModule],
+  imports: [IonicModule, CommonModule],
 })
 export class MenuComponent implements OnInit {
   appName: string = appName;

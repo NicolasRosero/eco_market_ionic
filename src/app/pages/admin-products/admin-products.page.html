@@ -1,0 +1,62 @@
+<ion-header>
+  <app-header />
+</ion-header>
+
+<ion-content [fullscreen]="true" class="screen-background-secondary">
+  <div class="main-content">
+    <div class="title-container">
+      <div>
+        <h3>Gestión de productos</h3>
+      </div>
+      <div class="action-box create-box" (click)="goToCreateProducto()">
+        <ion-icon name="add-outline" />
+      </div>
+    </div>
+
+    <!-- Sección de los productos -->
+    <div class="products-container">
+      <ion-item lines="none" class="product-item" *ngFor="let product of products">
+        <ion-grid fixed>
+          <ion-row class="ion-align-items-center">
+            <ion-col size="3" size-md="2" class="ion-text-center">
+              <div class="image-placeholder">
+                <img [src]="product.image" [alt]="product.name" />
+              </div>
+            </ion-col>
+
+            <ion-col size="6" size-md="7">
+              <div class="product-details">
+                <div class="detail-text name-text">
+                  {{ product.name }}
+                </div>
+                <div class="detail-text category-text">
+                  {{ product.category.name }}
+                </div>
+                <div class="detail-text stock-text">
+                  Stock: {{ product.stock }}
+                </div>
+              </div>
+            </ion-col>
+
+            <ion-col size="3" size-md="3">
+              <ion-row class="ion-justify-content-end ion-align-items-center ion-padding-end">
+                <ion-col size="auto" class="action-col">
+                  <div class="action-box edit-box" (click)="goToEditProduct(product.id)">
+                    <ion-icon name="pencil-outline"></ion-icon>
+                  </div>
+                </ion-col>
+
+                <ion-col size="auto" class="action-col">
+                  <div class="action-box delete-box" (click)="deleteProduct(product)">
+                    <ion-icon name="trash-outline"></ion-icon>
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+    </div>
+    <!-- End Sección de los productos -->
+  </div>
+</ion-content>

@@ -34,16 +34,16 @@ export interface Product {
   name: string;
   desc: string;
   price: number;
-  image: string;
+  image?: string;
   category: Category;
   stock: number;
   noted?: boolean;
-  quantity?: number;
+  // quantity?: number;
 }
 
 export interface Category {
   name: string;
-  image: string;
+  image?: string;
 }
 
 // Tipo del carrito de compras
