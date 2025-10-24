@@ -21,11 +21,11 @@ export class ProductsListComponent implements OnInit {
   ngOnInit() { }
 
   getTotalItems(): number {
-    return this.products.reduce((sum, product) => sum + (product?.quantity || 0), 0);
+    return this.products.reduce((sum, product) => sum + (product?.stock || 0), 0);
   }
 
   getTotalPrice(): number {
-    return this.products.reduce((sum, product) => sum + ((product?.quantity || 0) * product.price), 0);
+    return this.products.reduce((sum, product) => sum + ((product?.stock || 0) * product.price), 0);
   }
 
   async checkout(): Promise<void> {
@@ -38,7 +38,7 @@ export class ProductsListComponent implements OnInit {
 
     const resetProducts = () => {
       this.products.forEach((p) => {
-        p.quantity = 0;
+        p.stock = 0;
       });
     };
 
@@ -55,7 +55,7 @@ export class ProductsListComponent implements OnInit {
 
   // Cambiar la cantidad de productos disponibles
   changeQuantity(product: Product, delta: number): void {
-    const currentQuantity = product.quantity || 0;
+    const currentQuantity = product.stock || 0;
     const newQuantity = currentQuantity + delta;
 
     // Si el usuario intenta restar y la cantidad ya es 0, no hacemos nada
@@ -65,7 +65,7 @@ export class ProductsListComponent implements OnInit {
 
     // Evitar cantidad negativa (aunque ya lo cubre el punto 2, es bueno reforzar)
     if (newQuantity < 0) {
-      product.quantity = 0;
+      product.stock = 0;
       return;
     }
 
@@ -77,7 +77,7 @@ export class ProductsListComponent implements OnInit {
     // Si delta es +1 (Añadir), el stock disminuye (delta es +1, -delta es -1)
     // Si delta es -1 (Eliminar), el stock aumenta (delta es -1, -delta es +1)
     product.stock -= delta;
-    product.quantity = newQuantity;
+    product.stock = newQuantity;
   }
 
   // Establecer el producto como agotado
@@ -113,9 +113,9 @@ export class ProductsListComponent implements OnInit {
     ).subscribe((confirmed) => {
       if (confirmed) {
         this.products.forEach((p) => {
-          if ((p?.quantity ?? 0) > 0) {
-            p.stock += (p?.quantity ?? 0); // Devuelve la cantidad al stock
-            p.quantity = 0; // Vacía la cantidad en el carrito
+          if ((p?.stock ?? 0) > 0) {
+            p.stock += (p?.stock ?? 0); // Devuelve la cantidad al stock
+            p.stock = 0; // Vacía la cantidad en el carrito
           }
         });
       }

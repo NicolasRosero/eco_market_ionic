@@ -1,0 +1,113 @@
+.main-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 0 16px;
+
+  .title-container {
+    width: 55%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .action-box {
+      margin: 5px
+    }
+  }
+
+  .products-container {
+    width: 100%;
+    max-width: 900px;
+    margin: auto;
+
+    .product-item {
+      border: 1px solid var(--voga-color-gray);
+      border-radius: 15px;
+      margin: 10px auto;
+      min-height: 80px;
+
+      --padding-start: 0;
+      --inner-padding-end: 0;
+      --inner-padding-start: 0;
+
+      ion-grid {
+        width: 100%;
+        padding: 12px;
+      }
+
+      .image-placeholder {
+        width: 50px;
+        height: 50px;
+        border: 1px dashed var(--voga-color-gray);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.7rem;
+        margin: auto;
+        border-radius: 5px;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center;
+        }
+      }
+
+      .product-details {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-left: 5px;
+
+        .detail-text {
+          font-size: .8rem;
+          line-height: 1.2;
+        }
+
+        .name-text {
+          font-weight: bold;
+          color: var(--voga-dark);
+        }
+      }
+
+      .action-col {
+        padding: 0 4px;
+      }
+    }
+  }
+
+  .create-box {
+    background: var(--voga-green);
+  }
+
+  .edit-box {
+    background: var(--voga-warning);
+  }
+
+  .delete-box {
+    background: var(--voga-danger);
+  }
+}
+
+// Responsive
+@media (max-width: 750px) {
+  .title-container {
+    width: 90% !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .image-placeholder {
+    width: 70px;
+    height: 70px;
+  }
+
+  .action-box {
+    width: 45px;
+    height: 45px;
+    font-size: 1.5rem;
+  }
+}

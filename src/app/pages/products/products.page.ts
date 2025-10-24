@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { HeaderComponent } from "src/app/components/header/header.component";
 import { Product } from 'src/app/types'
-import { productsDB } from 'src/DB';
 import { ProductsListComponent } from "src/app/components/products-list/products-list.component";
+import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
   selector: 'app-products',
@@ -16,12 +16,15 @@ import { ProductsListComponent } from "src/app/components/products-list/products
 export class ProductsPage implements OnInit {
   products: Product[] = [];
 
-  constructor() { }
+  constructor(
+    private productsService: ProductsService
+  ) { }
 
   ngOnInit() {
-    this.products = productsDB.map((p) => ({
-      ...p,
-      quantity: 0
-    })) as Product[];
+    this.getProducts();
+  }
+
+  async getProducts(): Promise<void> {
+    this.products = await this.productsService.getProducts();
   }
 }
