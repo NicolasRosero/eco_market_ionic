@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HeaderComponent } from "src/app/components/header/header.component";
 
 @Component({
@@ -13,7 +13,23 @@ import { HeaderComponent } from "src/app/components/header/header.component";
 })
 export class CreateUpdateProductPage implements OnInit {
 
-  constructor() { }
+productForm: FormGroup
+
+  constructor( 
+    
+    private formBuilder: FormBuilder,
+
+  ) {
+    this.productForm = formBuilder.group({
+      name: ['', Validators.required],
+      description: ['', [Validators.required]],
+      Precio: [null, [Validators.required]],
+      category: ['', Validators.required],
+      stock: ['', [Validators.required]],
+      noted: ['', Validators.required],
+      agreeTerms: [false]
+    });
+   }
 
   ngOnInit() { }
 }

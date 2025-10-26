@@ -3,5 +3,83 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" class="screen-background-secondary">
-  <div>Hola Mundo</div>
+  <div class="main-container">
+    <div class="box form-section-container">
+      <div class="box title-container">
+        <p>
+          Editar producto -
+          <!--mostrar producto y id a editar-->
+        </p>
+      </div>
+
+      <div class="box form-container">
+        <form [formGroup]="productForm">
+          <div class="form-group">
+            <ion-label>Nombre</ion-label>
+            <ion-input
+              type="text"
+              formControlName="name"
+              placeholder="Nombre del producto"
+            >
+            </ion-input>
+          </div>
+
+          <div class="form-group">
+            <ion-label>Descripicon</ion-label>
+            <ion-input
+              type="text"
+              formControlName="description"
+              placeholder="Descripcion del producto"
+            >
+            </ion-input>
+          </div>
+
+          <div class="form-group">
+            <ion-label>Precio</ion-label>
+            <ion-input
+              type="text"
+              formControlName="Precio"
+              placeholder="Precio del producto"
+            >
+            </ion-input>
+          </div>
+
+          <div class="form-group">
+            <ion-label>Categoria</ion-label>
+            <ion-select-option formControlName="category">
+              <ion-select-option value="" disabled
+                >-- Seleccione --</ion-select-option
+              >
+            </ion-select-option>
+          </div>
+
+          <div class="form-group">
+            <ion-label>Stock</ion-label>
+            <ion-input
+              type="text"
+              inputmode="numeric"
+              formControlName="stock"
+              placeholder="Stock del producto"
+            >
+            </ion-input>
+          </div>
+
+          <div class="form-group">
+            <ion-label>Destacado</ion-label>
+            <ion-select-option formControlName="noted">
+              <ion-select-option value="" disabled
+                >-- Seleccione --</ion-select-option
+              >
+            </ion-select-option>
+          </div>
+        </form>
+
+        <div class="box btn-submit-container">
+          <ion-button class="btn btn-form-submit" type="button">
+            Actualizar
+          </ion-button>
+        </div>
+      </div>
+    </div>
+  </div>
 </ion-content>
