@@ -38,7 +38,7 @@ export interface Product {
   category: Category;
   stock: number;
   noted?: boolean;
-  // quantity?: number;
+  quantity?: number;
 }
 
 export interface Category {
