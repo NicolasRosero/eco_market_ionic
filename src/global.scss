@@ -108,6 +108,11 @@
   color: var(--voga-warning);
 }
 
+ion-fab-button {
+  --ion-color-danger: var(--voga-danger);
+  --ion-color-danger-shade: #cf3c4f;
+}
+
 .btn {
   --background: var(--voga-green);
   --background-activated: var(--voga-dark);
@@ -221,6 +226,6 @@ input[type="radio"] {
 }
 
 .agotado {
-  color: #e74c3c;
+  color: var(--voga-danger);
   font-weight: bold;
 }

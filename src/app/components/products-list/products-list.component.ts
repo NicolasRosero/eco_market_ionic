@@ -4,6 +4,8 @@ import { Product } from 'src/app/types';
 import { formatPrice } from 'src/app/utils/utils';
 import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
+import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-products-list',
@@ -15,7 +17,9 @@ export class ProductsListComponent implements OnInit {
   @Input() products: Product[] = [];
 
   constructor(
-    private alertService: AlertService
+    private alertService: AlertService,
+    private shoppinCartService: ShoppingCartService,
+    private router: Router
   ) { }
 
   ngOnInit() { }
@@ -31,26 +35,49 @@ export class ProductsListComponent implements OnInit {
   async checkout(): Promise<void> {
     const totalItems = this.getTotalItems();
     const totalPriceFormatted = this.setFormatPrice(this.getTotalPrice());
+    let itemsAddedCount = 0;
 
     if (totalItems === 0) {
+      await this.alertService.presentBasicAlert({
+        header: 'IMPORTANTE',
+        message: 'No has seleccionado ningún producto para añadir.',
+      });
+
       return;
     }
 
-    const resetProducts = () => {
-      this.products.forEach((p) => {
-        p.quantity = 0;
-      });
-    };
+    // Añadir productos seleccionados al carrito
+    for (const product of this.products) {
+      const quantity = product.quantity || 0;
 
-    this.alertService.customActionsAlert(
-      {
-        header: '¡Pago Exitoso!',
-        message: `Productos añadidos satisfactoriamente al carrito.\nTotal de ítems: ${totalItems}\nValor total: ${totalPriceFormatted}`,
-      },
-      'Ir al carrito',
-      'Continuar comprando',
-      resetProducts
-    );
+      if (quantity > 0) {
+        const result = await this.shoppinCartService.addShoppingCartItem(product, quantity);
+
+        if (result) {
+          itemsAddedCount++;
+        }
+
+        // Limpiar selección del producto
+        product.quantity = 0;
+      }
+    }
+
+    if (itemsAddedCount > 0) {
+      this.alertService.customActionsAlert(
+        {
+          header: '¡Exito!',
+          message: `Productos añadidos satisfactoriamente al carrito.\nTotal de ítems: ${totalItems}\nValor total: ${totalPriceFormatted}`,
+        },
+        'Ir al carrito',
+        'Continuar comprando',
+        () => this.goToShoppingCart()
+      );
+    } else {
+      await this.alertService.presentBasicAlert({
+        header: 'IMPORTANTE',
+        message: 'Ha ocurrido un error al añadir los productos al carrito.',
+      });
+    }
   }
 
   // Cambiar la cantidad de productos disponibles
@@ -76,7 +103,6 @@ export class ProductsListComponent implements OnInit {
 
     // Si delta es +1 (Añadir), el stock disminuye (delta es +1, -delta es -1)
     // Si delta es -1 (Eliminar), el stock aumenta (delta es -1, -delta es +1)
-    product.stock -= delta;
     product.quantity = newQuantity;
   }
 
@@ -114,12 +140,15 @@ export class ProductsListComponent implements OnInit {
       if (confirmed) {
         this.products.forEach((p) => {
           if ((p?.quantity ?? 0) > 0) {
-            p.stock += (p?.quantity ?? 0); // Devuelve la cantidad al stock
             p.quantity = 0; // Vacía la cantidad en el carrito
           }
         });
       }
     });
+  }
+
+  goToShoppingCart(): void {
+    this.router.navigate(['/shopping-cart']);
   }
 
   setFormatPrice(price: number): string {
