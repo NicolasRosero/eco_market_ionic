@@ -5,7 +5,7 @@ import { Product, ShoppigCartItem } from "../types";
 @Injectable({
   providedIn: 'root'
 })
-export class ShoppingCart {
+export class ShoppingCartService {
   private STORAKE_KEY = 'shoppingCart';
   private items: ShoppigCartItem[] = [];
 
@@ -99,6 +99,7 @@ export class ShoppingCart {
 
       if (existingItem) {
         this.items.splice(this.items.indexOf(existingItem), 1);
+        this.saveShoppingCart();
         return true;
       } else {
         return false;
