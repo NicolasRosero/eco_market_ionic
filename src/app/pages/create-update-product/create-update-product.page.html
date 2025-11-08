@@ -3,5 +3,119 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" class="screen-background-secondary">
-  <div>Hola Mundo</div>
+  <div class="main-container">
+    <div class="box form-section-container">
+      <div class="box title-container">
+        <p>
+          {{ isEditing ? 'Editar ' + product?.name : 'Agregar un nuevo producto' }}
+        </p>
+      </div>
+
+      <div class="box form-container">
+        <form [formGroup]="productForm">
+          <div class="form-group form-group-col-1">
+            <ion-label>Nombre</ion-label>
+            <ion-input
+              type="text"
+              formControlName="name"
+              placeholder="Nombre del producto"
+              [class.is-invalid]="
+                productForm.controls['name'].invalid &&
+                (productForm.controls['name'].touched || productForm.controls['name'].dirty)
+              "
+            />
+          </div>
+
+          <div class="form-group form-group-col-1">
+            <ion-label>Precio</ion-label>
+            <ion-input
+              type="text"
+              formControlName="price"
+              inputmode="numeric"
+              placeholder="Precio del producto"
+              (ionFocus)="setNumberFormat($event)"
+              (ionBlur)="setFormatPrice($event)"
+              [class.is-invalid]="
+                productForm.controls['price'].invalid &&
+                (productForm.controls['price'].touched || productForm.controls['price'].dirty)
+              "
+            />
+          </div>
+
+          <div class="form-group form-group-col-1">
+            <ion-label>Categoria</ion-label>
+            <ion-select
+              formControlName="category"
+              [compareWith]="compareCategories"
+              [class.is-invalid]="
+                productForm.controls['category'].invalid &&
+                (productForm.controls['category'].touched || productForm.controls['category'].dirty)
+              "
+            >
+              <ion-select-option value="" disabled>-- Seleccione --</ion-select-option>
+              <ion-select-option
+                [value]="category"
+                *ngFor="let category of categories"
+              >
+                {{ category.name }}
+              </ion-select-option>
+            </ion-select>
+          </div>
+
+          <div class="form-group form-group-col-2">
+            <ion-label>Stock</ion-label>
+            <ion-input
+              type="text"
+              inputmode="numeric"
+              formControlName="stock"
+              placeholder="Stock del producto"
+              [class.is-invalid]="
+                productForm.controls['stock'].invalid &&
+                (productForm.controls['stock'].touched || productForm.controls['stock'].dirty)
+              "
+            />
+          </div>
+
+          <div class="form-group form-group-col-1">
+            <ion-label>Destacado</ion-label>
+            <ion-select
+              formControlName="noted"
+              [class.is-invalid]="
+                productForm.controls['noted'].invalid &&
+                (productForm.controls['noted'].touched || productForm.controls['noted'].dirty)
+              "
+            >
+              <ion-select-option value="" disabled>-- Seleccione --</ion-select-option>
+              <ion-select-option value="true">Si</ion-select-option>
+              <ion-select-option value="false">No</ion-select-option>
+            </ion-select>
+          </div>
+
+          <div class="form-group form-group-full-width">
+            <ion-label>Descripción</ion-label>
+            <ion-textarea
+              formControlName="description"
+              placeholder="Descripción del producto"
+              rows="3"
+              [class.is-invalid]="
+                productForm.controls['description'].invalid &&
+                (productForm.controls['description'].touched || productForm.controls['description'].dirty)
+              "
+            />
+          </div>
+
+        </form>
+
+        <div class="box btn-container">
+          <ion-button class="btn-secondary" type="button" (click)="goBack()">
+            Regresar
+          </ion-button>
+
+          <ion-button class="btn btn-form-submit" type="button" (click)="saveData()">
+            {{ isEditing ? 'Guardar Cambios' : 'Agregar Producto' }}
+          </ion-button>
+        </div>
+      </div>
+    </div>
+  </div>
 </ion-content>

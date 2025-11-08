@@ -1,0 +1,69 @@
+.not-found-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--voga-almost-white);
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.content-box {
+  max-width: 450px;
+  text-align: center;
+  padding: 30px;
+  background: var(--voga-parcial-white);
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+  ion-icon {
+    font-size: 8rem;
+    color: var(--voga-warning);
+    margin-bottom: 10px;
+  }
+
+  h1 {
+    font-size: 5rem;
+    font-weight: 700;
+    color: var(--voga-dark);
+    margin: 0 0 10px 0;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--voga-green);
+    margin: 0 0 15px 0;
+  }
+
+  p {
+    font-size: 1rem;
+    color: var(--voga-dark);
+    margin-bottom: 30px;
+    line-height: 1.5;
+  }
+
+  .back-home-button {
+    --background: var(--voga-green);
+    --color: white;
+    --border-radius: 8px;
+    font-weight: bold;
+    height: 48px;
+    margin-top: 15px;
+  }
+}
+
+@media (max-width: 600px) {
+  .content-box {
+    padding: 20px;
+  }
+
+  ion-icon {
+    font-size: 6rem;
+  }
+
+  h1 {
+    font-size: 4rem;
+  }
+}
