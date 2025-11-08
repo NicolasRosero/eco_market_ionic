@@ -131,7 +131,7 @@ ion-fab-button {
   font-family: var(--voga-font-family-secondary) !important;
   font-weight: 600;
   padding: 0 2rem;
-  width: 100%;
+  width: 50%;
 }
 
 .btn-dark {
@@ -182,11 +182,13 @@ ion-label {
 }
 
 ion-input,
-ion-select {
+ion-select,
+ion-textarea {
   border: 1px solid var(--voga-green);
   background: var(--voga-almost-white);
   color: var(--voga-dark) !important;
   --padding: 0 8px !important;
+  border-radius: 6px;
 }
 
 .is-invalid {
@@ -228,4 +230,18 @@ input[type="radio"] {
 .agotado {
   color: var(--voga-danger);
   font-weight: bold;
+}
+
+/* Barra de scroll */
+::-webkit-scrollbar {
+  width: .7rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 1rem;
+}
+
+:hover::-webkit-scrollbar-thumb {
+  background: var(--voga-light-green);
 }

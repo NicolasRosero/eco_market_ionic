@@ -1,0 +1,20 @@
+<ion-content [fullscreen]="true">
+  <div class="not-found-container">
+    <div class="content-box">
+      <ion-icon name="alert-circle"></ion-icon>
+
+      <h1>404</h1>
+
+      <h2>¡Página No Encontrada!</h2>
+
+      <p>
+        Parece que la URL a la que intentaste acceder no existe o fue movida.
+        No te preocupes, puedes volver a la página de inicio.
+      </p>
+
+      <ion-button expand="block" class="back-home-button" (click)="goToHome()">
+        Volver al inicio
+      </ion-button>
+    </div>
+  </div>
+</ion-content>

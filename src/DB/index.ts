@@ -1,3 +1,27 @@
+// Data de ejemplo de las categorías
+export const categoriesDB = [
+  {
+    id: 1,
+    name: "Cuidado personal",
+    image: "assets/images/cuidado_personal.png"
+  },
+  {
+    id: 2,
+    name: "Reutilizables",
+    image: "assets/images/reutilizable.png"
+  },
+  {
+    id: 3,
+    name: "Accesorios",
+    image: "assets/images/accesorios.png"
+  },
+  {
+    id: 4,
+    name: "Higiene personal",
+    image: "assets/images/higiene_personal.png"
+  }
+];
+
 // Data de ejemplo de productos
 export const productsDB = [
   {
@@ -7,6 +31,7 @@ export const productsDB = [
     "price": 12000,
     "image": "assets/images/producto_skeleton.png",
     "category": {
+      "id": 1,
       "name": "Cuidado personal",
       "image": "assets/images/cuidado_personal.png"
     },
@@ -20,6 +45,7 @@ export const productsDB = [
     "price": 32000,
     "image": "assets/images/producto_skeleton.png",
     "category": {
+      "id": 1,
       "name": "Cuidado personal",
       "image": "assets/images/cuidado_personal.png"
     },
@@ -33,6 +59,7 @@ export const productsDB = [
     "price": 35000,
     "image": "assets/images/producto_skeleton.png",
     "category": {
+      "id": 1,
       "name": "Cuidado personal",
       "image": "assets/images/cuidado_personal.png"
     },
@@ -45,6 +72,7 @@ export const productsDB = [
     "price": 45000,
     "image": "assets/images/producto_skeleton.png",
     "category": {
+      "id": 1,
       "name": "Cuidado personal",
       "image": "assets/images/cuidado_personal.png"
     },
@@ -57,6 +85,7 @@ export const productsDB = [
     "price": 27000,
     "image": "assets/images/producto_skeleton.png",
     "category": {
+      "id": 1,
       "name": "Cuidado personal",
       "image": "assets/images/cuidado_personal.png"
     },
@@ -70,6 +99,7 @@ export const productsDB = [
     "price": 68000,
     "image": "assets/images/producto_skeleton.png",
     "category": {
+      "id": 2,
       "name": "Reutilizables",
       "image": "assets/images/reutilizable.png"
     },
@@ -82,6 +112,7 @@ export const productsDB = [
     "price": 28000,
     "image": "assets/images/producto_skeleton.png",
     "category": {
+      "id": 2,
       "name": "Reutilizables",
       "image": "assets/images/reutilizable.png"
     },
@@ -95,6 +126,7 @@ export const productsDB = [
     "price": 22000,
     "image": "assets/images/producto_skeleton.png",
     "category": {
+      "id": 2,
       "name": "Reutilizables",
       "image": "assets/images/reutilizable.png"
     },
@@ -107,6 +139,7 @@ export const productsDB = [
     "price": 38000,
     "image": "assets/images/producto_skeleton.png",
     "category": {
+      "id": 2,
       "name": "Reutilizables",
       "image": "assets/images/reutilizable.png"
     },
@@ -119,6 +152,7 @@ export const productsDB = [
     "price": 15000,
     "image": "assets/images/producto_skeleton.png",
     "category": {
+      "id": 2,
       "name": "Reutilizables",
       "image": "assets/images/reutilizable.png"
     },
@@ -132,6 +166,7 @@ export const productsDB = [
     "price": 25000,
     "image": "assets/images/producto_skeleton.png",
     "category": {
+      "id": 3,
       "name": "Accesorios",
       "image": "assets/images/accesorios.png"
     },
@@ -145,6 +180,7 @@ export const productsDB = [
     "price": 30000,
     "image": "assets/images/producto_skeleton.png",
     "category": {
+      "id": 3,
       "name": "Accesorios",
       "image": "assets/images/accesorios.png"
     },
@@ -157,6 +193,7 @@ export const productsDB = [
     "price": 18000,
     "image": "assets/images/producto_skeleton.png",
     "category": {
+      "id": 3,
       "name": "Accesorios",
       "image": "assets/images/accesorios.png"
     },
@@ -170,6 +207,7 @@ export const productsDB = [
     "price": 14000,
     "image": "assets/images/producto_skeleton.png",
     "category": {
+      "id": 3,
       "name": "Accesorios",
       "image": "assets/images/accesorios.png"
     },
@@ -182,6 +220,7 @@ export const productsDB = [
     "price": 10000,
     "image": "assets/images/producto_skeleton.png",
     "category": {
+      "id": 3,
       "name": "Accesorios",
       "image": "assets/images/accesorios.png"
     },
@@ -194,6 +233,7 @@ export const productsDB = [
     "price": 16000,
     "image": "assets/images/producto_skeleton.png",
     "category": {
+      "id": 4,
       "name": "Higiene personal",
       "image": "assets/images/higiene_personal.png"
     },
@@ -206,6 +246,7 @@ export const productsDB = [
     "price": 21000,
     "image": "assets/images/producto_skeleton.png",
     "category": {
+      "id": 4,
       "name": "Higiene personal",
       "image": "assets/images/higiene_personal.png"
     },
@@ -218,6 +259,7 @@ export const productsDB = [
     "price": 18000,
     "image": "assets/images/producto_skeleton.png",
     "category": {
+      "id": 4,
       "name": "Higiene personal",
       "image": "assets/images/higiene_personal.png"
     },
@@ -231,6 +273,7 @@ export const productsDB = [
     "price": 29000,
     "image": "assets/images/producto_skeleton.png",
     "category": {
+      "id": 4,
       "name": "Higiene personal",
       "image": "assets/images/higiene_personal.png"
     },
@@ -243,9 +286,11 @@ export const productsDB = [
     "price": 13000,
     "image": "assets/images/producto_skeleton.png",
     "category": {
+      "id": 4,
       "name": "Higiene personal",
       "image": "assets/images/higiene_personal.png"
     },
     "stock": 75
   }
-]
+];
+
