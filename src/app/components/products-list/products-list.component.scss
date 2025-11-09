@@ -163,6 +163,8 @@
 // 4. Estilos para el Footer (Verde Oscuro - Color Primary)
 // -----------------------------------------------------------------
 .total-summary {
+  position: static;
+
   ion-toolbar {
     --padding-start: 0;
     --padding-end: 0;

@@ -26,12 +26,12 @@ export const routes: Routes = [
   {
     path: 'home',
     loadComponent: () => import('./pages/home/home.page').then((m) => m.HomePage),
-    // canActivate: [authGuard]
+    canActivate: [authGuard]
   },
   {
     path: 'shopping-cart',
     loadComponent: () => import('./pages/shopping-cart/shopping-cart.page').then(m => m.ShoppingCartPage),
-    // canActivate: [authGuard]
+    canActivate: [authGuard]
   },
   {
     path: 'splash',
@@ -40,37 +40,37 @@ export const routes: Routes = [
   {
     path: 'profile',
     loadComponent: () => import('./pages/profile/profile.page').then(m => m.ProfilePage),
-    // canActivate: [authGuard]
+    canActivate: [authGuard]
   },
   {
     path: 'products',
     loadComponent: () => import('./pages/products/products.page').then(m => m.ProductsPage),
-    // canActivate: [authGuard]
+    canActivate: [authGuard]
   },
   {
     path: 'categories',
     loadComponent: () => import('./pages/categories/categories.page').then(m => m.CategoriesPage),
-    // canActivate: [authGuard]
+    canActivate: [authGuard]
   },
   {
     path: 'products-by-category',
     loadComponent: () => import('./pages/products-by-category/products-by-category.page').then(m => m.ProductsByCategoryPage),
-    // canActivate: [authGuard]
+    canActivate: [authGuard]
   },
   {
     path: 'admin-products',
     loadComponent: () => import('./pages/admin-products/admin-products.page').then(m => m.AdminProductsPage),
-    // canActivate: [authGuard]
+    canActivate: [authGuard]
   },
   {
     path: 'create-product',
     loadComponent: () => import('./pages/create-update-product/create-update-product.page').then(m => m.CreateUpdateProductPage),
-    // canActivate: [authGuard]
+    canActivate: [authGuard]
   },
   {
     path: 'update-product/:id',
     loadComponent: () => import('./pages/create-update-product/create-update-product.page').then(m => m.CreateUpdateProductPage),
-    // canActivate: [authGuard]
+    canActivate: [authGuard]
   },
   {
     path: 'not-found',
