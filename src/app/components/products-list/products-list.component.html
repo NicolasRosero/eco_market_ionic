@@ -1,53 +1,55 @@
-<div class="product-list-container">
-  <div class="product-list">
-    <div class="product-card" [class.is-out-of-stock]="product.stock === 0" *ngFor="let product of products">
-      <div class="image-container">
-        <img [src]="product.image" alt="{{ product.name || 'Producto de catálogo' }}">
+<ion-content>
+  <div class="product-list-container">
+    <div class="product-list">
+      <div class="product-card" [class.is-out-of-stock]="product.stock === 0" *ngFor="let product of products">
+        <div class="image-container">
+          <img [src]="product.image" alt="{{ product.name || 'Producto de catálogo' }}">
 
-        <ion-badge *ngIf="product.noted" color="tertiary" class="noted-badge">
-          Destacado
-        </ion-badge>
-      </div>
+          <ion-badge *ngIf="product.noted" color="tertiary" class="noted-badge">
+            Destacado
+          </ion-badge>
+        </div>
 
-      <div class="product-info">
-        <h2>{{ product.name }}</h2>
-        <p class="description">{{ product.desc }}</p>
+        <div class="product-info">
+          <h2>{{ product.name }}</h2>
+          <p class="description">{{ product.desc }}</p>
 
-        <p class="price">{{ setFormatPrice(product.price) }}</p>
+          <p class="price">{{ setFormatPrice(product.price) }}</p>
 
-        <p class="stock" *ngIf="product.stock > 0">
-          Disponible: {{ product.stock }} unidades
-        </p>
+          <p class="stock" *ngIf="product.stock > 0">
+            Disponible: {{ product.stock }} unidades
+          </p>
 
-        <p class="agotado-text" *ngIf="product.stock === 0">
-          AGOTADO
-        </p>
-      </div>
+          <p class="agotado-text" *ngIf="product.stock === 0">
+            AGOTADO
+          </p>
+        </div>
 
-      <div class="product-controls">
-        <ion-button *ngIf="product.stock === 0" color="danger" expand="block" disabled>
-          AGOTADO
-        </ion-button>
-
-        <div class="product-controls-group inline-buttons" *ngIf="product.stock > 0">
-          <ion-button size="small" fill="solid" color="danger" (click)="changeQuantity(product, -1)"
-            [disabled]="(product.quantity || 0) <= 0">
-            <ion-icon name="remove-outline"></ion-icon>
+        <div class="product-controls">
+          <ion-button *ngIf="product.stock === 0" color="danger" expand="block" disabled>
+            AGOTADO
           </ion-button>
 
-          <div class="quantity-display">
-            {{ product.quantity }}
+          <div class="product-controls-group inline-buttons" *ngIf="product.stock > 0">
+            <ion-button size="small" fill="solid" color="danger" (click)="changeQuantity(product, -1)"
+              [disabled]="(product.quantity || 0) <= 0">
+              <ion-icon name="remove-outline"></ion-icon>
+            </ion-button>
+
+            <div class="quantity-display">
+              {{ product.quantity }}
+            </div>
+
+            <ion-button size="small" fill="solid" color="success" (click)="changeQuantity(product, 1)"
+              [disabled]="product.stock === 0">
+              <ion-icon name="add-outline"></ion-icon>
+            </ion-button>
           </div>
-
-          <ion-button size="small" fill="solid" color="success" (click)="changeQuantity(product, 1)"
-            [disabled]="product.stock === 0">
-            <ion-icon name="add-outline"></ion-icon>
-          </ion-button>
         </div>
       </div>
     </div>
   </div>
-</div>
+</ion-content>
 
 <ion-footer class="total-summary">
   <ion-toolbar>
@@ -59,7 +61,7 @@
 
       <div class="summary-actions">
         <ion-button color="success" (click)="checkout()" [disabled]="getTotalItems() === 0">
-          Agregar
+          Agregar al carrito
         </ion-button>
 
         <ion-button color="danger" (click)="clearCart()" [disabled]="getTotalItems() === 0">

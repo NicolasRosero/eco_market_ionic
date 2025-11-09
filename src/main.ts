@@ -7,7 +7,7 @@ import { routes } from './app/app.routes';
 import { AppComponent } from './app/app.component';
 import { importProvidersFrom } from '@angular/core';
 import { addIcons } from 'ionicons';
-import { alertCircle, cartOutline, checkmarkCircle, closeCircle, locationOutline, menu, menuOutline, chevronDown, homeOutline, personOutline, gridOutline, listOutline, settingsOutline, logOutOutline, personCircleOutline, addOutline, removeOutline, trashOutline, bagOutline, pencilOutline } from 'ionicons/icons';
+import { alertCircle, cartOutline, checkmarkCircle, closeCircle, locationOutline, menu, menuOutline, chevronDown, homeOutline, personOutline, gridOutline, listOutline, settingsOutline, logOutOutline, personCircleOutline, addOutline, removeOutline, trashOutline, bagOutline, pencilOutline, lockClosedOutline } from 'ionicons/icons';
 
 // Configurar aquí los iconos a usar
 addIcons({
@@ -30,7 +30,8 @@ addIcons({
   'remove-outline': removeOutline,
   'trash-outline': trashOutline,
   'bag-outline': bagOutline,
-  'pencil-outline': pencilOutline
+  'pencil-outline': pencilOutline,
+  'lock-closed-outline': lockClosedOutline
 });
 
 bootstrapApplication(AppComponent, {
